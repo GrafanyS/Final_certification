@@ -31,7 +31,7 @@ public class ConsoleView implements View <Pet> {
             System.out.println("список пуст");
         else {
             if (clazz == Pet.class)
-                System.out.println("\n          Наши питомцы:");
+                System.out.println("\n Наши питомцы:");
             for (T item : list) {
                 System.out.println(item);
             }

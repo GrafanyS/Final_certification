@@ -11,7 +11,8 @@ public enum PetType {
             case 1 -> PetType.Cat;
             case 2 -> PetType.Dog;
             case 3 -> PetType.Hamster;
-            default -> null;
+//            default -> null;
+            default -> throw new IllegalStateException("Unexpected value: " + typeId);
         };
     }
 }
