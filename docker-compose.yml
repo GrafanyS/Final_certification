@@ -9,7 +9,7 @@ services:
       # node neede for phpmyadmin
       - "3306:3306"
     volumes:
-      - ./ db:/var/lib/mysql
+      - ./db:/var/lib/mysql
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     depends_on:
