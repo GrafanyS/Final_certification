@@ -15,33 +15,27 @@ import Model.*;
 public class PetRepository implements IRepository<Pet> {
 
     private final Creator petCreator;
-    private Statement sqlSt;
     private ResultSet resultSet;
     private String SQLst;
 
     public PetRepository() {
         this.petCreator = new PetCreator();
-    };
+    }
+
 
     @Override
     public List<Pet> getAll() {
-        List<Pet> farm = new ArrayList<Pet>();
+        List<Pet> farm = new ArrayList<>();
         Pet pet;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             try (Connection dbConnection = getConnection()) {
-                sqlSt = dbConnection.createStatement();
+                Statement sqlSt = dbConnection.createStatement();
                 SQLst = "SELECT GenusId, Id, PetName, Birthday FROM pet_list ORDER BY Id";
                 resultSet = sqlSt.executeQuery(SQLst);
                 while (resultSet.next()) {
 
-                    PetType type = PetType.getType(resultSet.getInt(1));
-                    int id = resultSet.getInt(2);
-                    String name = resultSet.getString(3);
-                    LocalDate birthday = resultSet.getDate(4).toLocalDate();
-
-                    pet = petCreator.createPet(type, name, birthday);
-                    pet.setPetId(id);
+                    pet = getPet();
                     farm.add(pet);
                 }
                 return farm;
@@ -50,6 +44,18 @@ public class PetRepository implements IRepository<Pet> {
             Logger.getLogger(PetRepository.class.getName()).log(Level.SEVERE, null, ex);
             throw new RuntimeException(ex.getMessage());
         }
+    }
+
+    private Pet getPet() throws SQLException {
+        Pet pet;
+        PetType type = PetType.getType(resultSet.getInt(1));
+        int id = resultSet.getInt(2);
+        String name = resultSet.getString(3);
+        LocalDate birthday = resultSet.getDate(4).toLocalDate();
+
+        pet = petCreator.createPet(type, name, birthday);
+        pet.setPetId(id);
+        return pet;
     }
 
     @Override
@@ -66,13 +72,7 @@ public class PetRepository implements IRepository<Pet> {
 
                 if (resultSet.next()) {
 
-                    PetType type = PetType.getType(resultSet.getInt(1));
-                    int id = resultSet.getInt(2);
-                    String name = resultSet.getString(3);
-                    LocalDate birthday = resultSet.getDate(4).toLocalDate();
-
-                    pet = petCreator.createPet(type, name, birthday);
-                    pet.setPetId(id);
+                    pet = getPet();
                 }
                 return pet;
             }
