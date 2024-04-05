@@ -21,20 +21,19 @@ public class ConsoleMenu {
             boolean flag = true;
             int id;
             while (flag) {
-
-                System.out.println(
-                        """
-                            1 - Список всех животных
-                            2 - Завести новое животное
-                            3 - Изменить данные о животном
-                            4 - Что умеет животное
-                            5 - Дрессировка
-                            6 - Удалить запись
-                            0 - Выход""");
+                System.out.println("1 - Список всех животных\n" +
+                                   "2 - Завести новое животное\n" +
+                                   "3 - Изменить данные о животном\n" +
+                                   "4 - Что умеет животное\n" +
+                                   "5 - Дрессировка\n" +
+                                   "6 - Удалить запись\n" +
+                                   "0 - Выход");
                 String key = in.next();
                 switch (key) {
-                    case "1" -> petController.getAllPet();
-                    case "2" -> {
+                    case "1":
+                        petController.getAllPet();
+                        break;
+                    case "2":
                         PetType type = menuChoice(in);
                         if (type != null) {
                             try {
@@ -45,8 +44,8 @@ public class ConsoleMenu {
                                 System.out.println(e.getMessage());
                             }
                         }
-                    }
-                    case "3" -> {
+                        break;
+                    case "3":
                         while (true) {
                             id = menuChoicePet(in);
                             if (id != 0)
@@ -58,8 +57,8 @@ public class ConsoleMenu {
                             else
                                 break;
                         }
-                    }
-                    case "4" -> {
+                        break;
+                    case "4":
                         while (true) {
                             id = menuChoicePet(in);
                             if (id != 0)
@@ -67,48 +66,45 @@ public class ConsoleMenu {
                             else
                                 break;
                         }
-                    }
-                    case "5" -> {
+                        break;
+                    case "5":
                         id = menuChoicePet(in);
                         if (id != 0)
                             menuTrainPet(id, in);
-                    }
-                    case "6" -> {
+                        break;
+                    case "6":
                         id = menuChoicePet(in);
                         if (id != 0)
                             petController.delete(id);
-                    }
-                    case "0" -> flag = false;
-                    default -> System.out.println("такого варианта нет");
+                        break;
+                    case "0":
+                        flag = false;
+                        break;
+                    default:
+                        System.out.println("такого варианта нет");
                 }
             }
         }
     }
-
     private PetType menuChoice(Scanner in) {
-        System.out.println("""
-                Какое животное добавить:
-                1 - Кошка
-                2 - Собака
-                3 - Хомяк
-                0 - Возврат в основное меню""");
+        System.out.println("Какое животное добавить:\n" +
+                           "1 - Кошка\n" +
+                           "2 - Собака\n" +
+                           "3 - Хомяк\n" +
+                           "0 - Возврат в основное меню");
 
         while (true) {
             String key = in.next();
             switch (key) {
-                case "1" -> {
+                case "1":
                     return PetType.Cat;
-                }
-                case "2" -> {
-                    return PetType.Dog;
-                }
-                case "3" -> {
-                    return PetType.Hamster;
-                }
-                case "0" -> {
+                case "2":
+                    return PetType.Dog;                
+                case "3":
+                    return PetType.Hamster;                
+                case "0":
                     return null;
-                }
-                default -> System.out.println("Такого варианта нет, введите число от 0 до 3");
+                default: System.out.println("Такого варианта нет, введите число от 0 до 3");
             }
         }
     }

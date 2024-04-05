@@ -5,13 +5,16 @@ public enum PetType {
     Cat,
     Dog,
     Hamster;
-
-    public static PetType getType (int typeId){
-        return switch (typeId) {
-            case 1 -> PetType.Cat;
-            case 2 -> PetType.Dog;
-            case 3 -> PetType.Hamster;
-            default -> throw new IllegalStateException("Unexpected value: " + typeId);
-        };
+    public static PetType getType(int typeId) {
+        switch (typeId) {
+            case 1:
+                return PetType.Cat;
+            case 2:
+                return PetType.Dog;
+            case 3:
+                return PetType.Hamster;
+            default:
+                throw new IllegalStateException("Unexpected value: " + typeId);
+        }
     }
 }
