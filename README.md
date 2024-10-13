@@ -1,7 +1,7 @@
 # Итоговая аттестация
 
 Status of Last Deployment:<br>
-<img src="https://github.com/GrafanyS/Final_certification/workflows/Maven-Package/badge.svg?branch=main"><br>
+<img src="https://github.com/GrafanyS/Final_certification/workflows/Gradle-Package/badge.svg?branch=main"><br>
 
 
 
