@@ -1,5 +1,12 @@
 # Итоговая аттестация
 
+Status of Last Deployment:<br>
+<img src="https://github.com/adv-it/github-actions-part2-cicd-to-aws/workflows/CI-CD-grafant-test/badge.svg?branch=master"><br>
+
+
+
+Copyleft by Andrei Valetov 2023.
+
 ## Информация о проекте
 
 Необходимо организовать систему учета для питомника, в котором живут
