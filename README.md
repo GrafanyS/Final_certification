@@ -1,7 +1,7 @@
 # Итоговая аттестация
 
 Status of Last Deployment:<br>
-<img src="https://github.com/GrafanyS/Final_certification/workflows/CI-CD-grafant-test/badge.svg?branch=master"><br>
+<img src="https://github.com/GrafanyS/Final_certification/workflows/CI-CD-grafant-test/badge.svg?branch=main"><br>
 
 
 
