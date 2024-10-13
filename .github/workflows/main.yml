@@ -23,7 +23,7 @@ on:
 
 jobs:
     my_ci_pipeline:
-       runs-on: ubuntu-latest
+       runs-on: self-hosted
        
        steps:
          - name: Git clone our repository
@@ -46,7 +46,7 @@ jobs:
            run : echo "CI Pipeline part finished successfully"
            
     my_cd_pipeline:
-       runs-on: ubuntu-latest
+       runs-on: self-hosted
        needs: [my_ci_pipeline]
        
        steps:
